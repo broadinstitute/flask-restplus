@@ -215,6 +215,8 @@ class Swagger(object):
             'basePath': basepath,
             'paths': not_none_sorted(paths),
             'info': infos,
+            'host': self.get_host(),
+            'schemes': self.api.schemes or None,
             'produces': list(iterkeys(self.api.representations)),
             'consumes': ['application/json'],
             'securityDefinitions': self.api.authorizations or None,
@@ -222,7 +224,6 @@ class Swagger(object):
             'tags': tags,
             'definitions': self.serialize_definitions() or None,
             'responses': responses or None,
-            'host': self.get_host(),
         }
         return not_none(specs)
 
