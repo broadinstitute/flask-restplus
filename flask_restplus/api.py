@@ -95,7 +95,8 @@ class Api(object):
 
     def __init__(self, app=None, version='1.0', title=None, description=None,
             terms_url=None, license=None, license_url=None,
-            contact=None, contact_url=None, contact_email=None, host=None, schemes=None,
+            contact=None, contact_url=None, contact_email=None,
+            host=None, schemes=None, extensions=None,
             authorizations=None, security=None, doc='/', default_id=default_id,
             default='default', default_label='Default namespace', validate=None,
             tags=None, prefix='', ordered=False,
@@ -122,6 +123,7 @@ class Api(object):
         self._doc_view = None
         self._default_error_handler = None
         self.tags = tags or []
+        self.extensions = extensions
 
         self.error_handlers = {
             ParseError: mask_parse_error_handler,

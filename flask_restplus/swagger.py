@@ -225,7 +225,21 @@ class Swagger(object):
             'definitions': self.serialize_definitions() or None,
             'responses': responses or None,
         }
+
+        # merge in the top-level extensions
+        specs = self.add_extensions(specs)
+
         return not_none(specs)
+
+    def add_extensions(self, specs):
+        # add support for vendor extensions at the root level of the schema
+        if not self.api.extensions or not isinstance(self.api.extensions, dict):
+            return specs
+        for k, v in self.api.extensions:
+            if not k.starts_with('-x'):
+                k = 'x-{}'.format(k)
+            specs[k] = v
+        return specs
 
     def get_host(self):
         if self.api.host:
