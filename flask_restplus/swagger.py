@@ -235,7 +235,7 @@ class Swagger(object):
         # add support for vendor extensions at the root level of the schema
         if not self.api.extensions or not isinstance(self.api.extensions, dict):
             return specs
-        for k, v in self.api.extensions:
+        for k, v in self.api.extensions.items():
             if not k.starts_with('-x'):
                 k = 'x-{}'.format(k)
             specs[k] = v
