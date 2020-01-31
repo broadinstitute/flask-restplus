@@ -95,7 +95,7 @@ class Api(object):
 
     def __init__(self, app=None, version='1.0', title=None, description=None,
             terms_url=None, license=None, license_url=None,
-            contact=None, contact_url=None, contact_email=None,
+            contact=None, contact_url=None, contact_email=None, host=None,
             authorizations=None, security=None, doc='/', default_id=default_id,
             default='default', default_label='Default namespace', validate=None,
             tags=None, prefix='', ordered=False,
@@ -109,6 +109,7 @@ class Api(object):
         self.contact = contact
         self.contact_email = contact_email
         self.contact_url = contact_url
+        self.host = host
         self.license = license
         self.license_url = license_url
         self.authorizations = authorizations
