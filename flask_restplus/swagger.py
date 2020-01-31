@@ -236,7 +236,7 @@ class Swagger(object):
         if not self.api.extensions or not isinstance(self.api.extensions, dict):
             return specs
         for k, v in self.api.extensions.items():
-            if not k.startswith('-x'):
+            if not k.startswith('-x', k):
                 k = 'x-{}'.format(k)
             specs[k] = v
         return specs
